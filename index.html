@@ -2,105 +2,186 @@
 <html lang="fa" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<title>سایت من</title>
+<title>نئون آرنا — نمونه قالب بازی سایبرپانک</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-
-<meta property="og:title" content="سایت من">
-<link rel="stylesheet" href="https://fonts.bunny.net/css?family=lalezar:400">
 <style>
-  :root{ --primary:#00ff00; --site-font:'لاله‌زار','Vazirmatn','Segoe UI',Tahoma,sans-serif; }
-  *{ box-sizing:border-box; margin:0; padding:0; }
-  body{ font-family:var(--site-font); background:#fff; color:#181818; line-height:1.7; }
-  a{ color:inherit; }
-  .navbar{ display:flex; justify-content:space-between; align-items:center; padding:18px 8%; border-bottom:1px solid #eee; flex-wrap:wrap; gap:10px; }
-  .navbar .nb-logo{ font-weight:800; font-size:17px; }
-  .navbar .nb-links{ display:flex; gap:20px; }
-  .navbar .nb-links a{ text-decoration:none; font-size:13.5px; color:#444; }
-  .hero{ padding:90px 8% 70px; text-align:center; background:linear-gradient(160deg, var(--primary) 0%, #0000 60%), #101418; color:#fff; }
-  .hero h1{ font-size:38px; font-weight:800; line-height:1.4; }
-  .hero p{ margin-top:16px; font-size:15px; opacity:.85; max-width:520px; margin-inline:auto; }
-  .hero-ctas{ display:flex; gap:12px; justify-content:center; margin-top:26px; flex-wrap:wrap; }
-  .cta, .btn-solid{ display:inline-block; padding:13px 30px; border-radius:10px; background:var(--primary); color:#04140F; font-weight:800; font-size:14px; text-decoration:none; }
-  .cta-ghost, .btn-outline{ display:inline-block; padding:13px 30px; border-radius:10px; border:1.5px solid rgba(255,255,255,.5); color:inherit; font-weight:700; font-size:14px; text-decoration:none; }
-  .text-block{ padding:50px 8%; max-width:820px; margin-inline:auto; }
-  .text-block h2{ font-size:23px; font-weight:800; margin-bottom:12px; }
-  .text-block p{ font-size:14.5px; color:#555; }
-  .image-block{ padding:20px 8%; text-align:center; }
-  .image-block img{ max-width:100%; border-radius:14px; }
-  .image-block .cap{ margin-top:10px; font-size:12px; color:#888; }
-  .gallery-block{ padding:20px 8%; }
-  .gallery-block .gal-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:12px; }
-  .gallery-block img{ width:100%; height:180px; object-fit:cover; border-radius:12px; }
-  .button-block{ padding:36px 8%; text-align:center; }
-  .cta-banner-block{ padding:70px 8%; text-align:center; background:var(--primary); color:#04140F; }
-  .cta-banner-block h2{ font-size:26px; font-weight:800; margin-bottom:12px; }
-  .cta-banner-block p{ opacity:.85; margin-bottom:22px; }
-  .cta-white{ display:inline-block; padding:13px 30px; border-radius:10px; background:#fff; color:#111; font-weight:800; text-decoration:none; }
-  .features-block{ padding:50px 8%; max-width:1000px; margin-inline:auto; }
-  .features-block h2{ font-size:22px; font-weight:800; text-align:center; margin-bottom:24px; }
-  .grid2{ display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:20px; }
-  .grid3{ display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:20px; }
-  .fi{ background:#f7f7f7; border-radius:14px; padding:22px; }
-  .fi h4{ font-size:15px; margin-bottom:8px; } .fi p{ font-size:12.5px; color:#777; }
-  .stats-block{ display:flex; flex-wrap:wrap; justify-content:center; gap:40px; padding:50px 8%; background:#101418; color:#fff; }
-  .stats-block .st{ text-align:center; } .stats-block b{ display:block; font-size:26px; color:var(--primary); }
-  .stats-block span{ font-size:11.5px; opacity:.7; }
-  .testimonials-block{ padding:50px 8%; max-width:900px; margin-inline:auto; }
-  .tm{ background:#f7f7f7; border-radius:14px; padding:22px; }
-  .tm p{ font-size:13.5px; color:#333; margin-bottom:14px; }
-  .tm-name{ font-weight:700; font-size:13px; } .tm-role{ font-size:11px; color:#888; }
-  .pricing-block{ display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:20px; padding:50px 8%; max-width:1000px; margin-inline:auto; }
-  .pr{ border:1px solid #eee; border-radius:16px; padding:26px; text-align:center; }
-  .pr-name{ font-weight:700; font-size:14px; color:#888; } .pr-price{ font-size:26px; font-weight:800; margin:10px 0; }
-  .pr ul{ list-style:none; font-size:12.5px; color:#555; margin:16px 0; text-align:right; }
-  .pr ul li{ padding:5px 0; } .pr-cta{ display:inline-block; margin-top:10px; padding:10px 22px; border-radius:8px; background:var(--primary); color:#04140F; font-weight:800; text-decoration:none; font-size:13px; }
-  .faq-block{ padding:50px 8%; max-width:720px; margin-inline:auto; }
-  .faq-block details{ border-bottom:1px solid #eee; padding:14px 0; }
-  .faq-block summary{ cursor:pointer; font-weight:700; font-size:14px; }
-  .faq-block p{ margin-top:10px; font-size:13px; color:#666; }
-  .team-block{ padding:50px 8%; max-width:1000px; margin-inline:auto; }
-  .tmm{ text-align:center; } .tmm img, .tmm-placeholder{ width:100px; height:100px; border-radius:50%; object-fit:cover; background:#eee; margin:0 auto 12px; }
-  .tmm-name{ font-weight:700; font-size:13.5px; } .tmm-role{ font-size:11px; color:#888; }
-  .video-block{ padding:30px 8%; text-align:center; }
-  .video-block video, .video-block iframe{ max-width:100%; width:100%; max-width:800px; aspect-ratio:16/9; border-radius:14px; border:none; }
-  .social-block{ display:flex; justify-content:center; gap:12px; padding:30px 8%; flex-wrap:wrap; }
-  .social-block a{ padding:9px 18px; border-radius:999px; background:#f2f2f2; font-size:12.5px; text-decoration:none; }
-  .newsletter-block{ padding:60px 8%; text-align:center; background:#f7f7f7; }
-  .newsletter-block h2{ font-size:22px; font-weight:800; margin-bottom:10px; }
-  .newsletter-block form{ display:flex; gap:8px; justify-content:center; margin-top:20px; flex-wrap:wrap; }
-  .newsletter-block input{ padding:12px 16px; border-radius:10px; border:1px solid #ddd; font-size:13px; min-width:220px; }
-  .newsletter-block button{ padding:12px 22px; border-radius:10px; border:none; background:var(--primary); color:#04140F; font-weight:800; font-size:13px; cursor:pointer; }
-  .map-block{ padding:20px 8%; text-align:center; }
-  .map-block iframe{ width:100%; max-width:800px; height:320px; border-radius:14px; }
-  .map-address{ margin-top:10px; font-size:12.5px; color:#777; }
-  hr{ border:none; border-top:1px solid #eee; margin:10px 8%; }
-  .spacer-small{ height:24px; } .spacer-medium{ height:56px; } .spacer-large{ height:110px; }
-  footer{ padding:36px 8%; text-align:center; background:#101418; color:#aaa; font-size:12.5px; }
-  .logos-block{ padding:44px 8%; text-align:center; }
-  .logos-block h2{ font-size:16px; font-weight:700; color:#888; margin-bottom:24px; }
-  .logos-row{ display:flex; flex-wrap:wrap; justify-content:center; align-items:center; gap:36px; }
-  .logos-row img{ max-height:36px; max-width:120px; object-fit:contain; filter:grayscale(1); opacity:.75; }
-  .timeline-block{ padding:50px 8%; max-width:820px; margin-inline:auto; }
-  .timeline-block h2{ font-size:22px; font-weight:800; text-align:center; margin-bottom:26px; }
-  .tl-grid{ display:flex; flex-direction:column; gap:14px; }
-  .tl-step{ display:flex; gap:16px; align-items:flex-start; background:#f7f7f7; border-radius:14px; padding:18px 20px; }
-  .tl-step-num{ width:32px; height:32px; border-radius:9px; background:var(--primary); color:#04140F; font-weight:800; font-size:13px; display:flex; align-items:center; justify-content:center; flex:none; }
-  .tl-step h4{ font-size:14px; margin-bottom:4px; } .tl-step p{ font-size:12.5px; color:#666; }
-  .countdown-block{ padding:60px 8%; text-align:center; background:#101418; color:#fff; }
-  .countdown-block h2{ font-size:22px; font-weight:800; margin-bottom:22px; }
-  .cd-timer{ display:flex; justify-content:center; gap:14px; flex-wrap:wrap; }
-  .cd-box{ background:rgba(255,255,255,.06); border-radius:14px; padding:16px 18px; min-width:70px; }
-  .cd-box span{ display:block; font-size:26px; font-weight:800; color:var(--primary); }
-  .cd-box small{ font-size:10.5px; opacity:.7; }
-  .countdown-block p{ margin-top:20px; opacity:.75; font-size:12.5px; }
+  :root{
+    --bg:#0A0714; --card:rgba(255,255,255,.05); --primary:#FF3D9A; --accent:#7C4DFF;
+    --text:#F1ECFF; --muted:#9C93B8; --border:rgba(255,255,255,.1);
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{
+    background:
+      radial-gradient(circle at 15% 10%, rgba(255,61,154,.18), transparent 45%),
+      radial-gradient(circle at 85% 30%, rgba(124,77,255,.22), transparent 45%),
+      var(--bg);
+    color:var(--text);
+    font-family:'Vazirmatn','Segoe UI',system-ui,sans-serif;
+    overflow-x:hidden;
+  }
+  nav{
+    display:flex;justify-content:space-between;align-items:center;
+    padding:20px 8%; backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--border);
+  }
+  .logo{font-weight:800;font-size:20px; letter-spacing:.5px;}
+  .logo span{ color:var(--primary); text-shadow:0 0 12px rgba(255,61,154,.7); }
+  nav a{color:var(--muted);text-decoration:none;margin-inline-start:26px;font-size:14px;}
+
+  .hero{ text-align:center; padding:90px 8% 80px; position:relative; }
+  .hero .tag{
+    display:inline-block; padding:6px 16px; border-radius:999px;
+    background:rgba(255,61,154,.12); border:1px solid rgba(255,61,154,.4);
+    color:var(--primary); font-size:12px; margin-bottom:20px;
+  }
+  .hero h1{ font-size:48px; font-weight:800; line-height:1.3; }
+  .hero h1 span{ background:linear-gradient(90deg,var(--primary),var(--accent)); -webkit-background-clip:text; background-clip:text; color:transparent; }
+  .hero p{ margin-top:16px; color:var(--muted); font-size:15.5px; max-width:520px; margin-inline:auto; }
+  .cta-row{ display:flex; gap:12px; justify-content:center; margin-top:30px; flex-wrap:wrap; }
+  .cta{
+    padding:13px 28px; border-radius:12px; font-weight:800; font-size:14px;
+  }
+  .cta.primary{ background:linear-gradient(90deg,var(--primary),var(--accent)); color:#fff; box-shadow:0 0 24px rgba(255,61,154,.5); }
+  .cta.ghost{ border:1px solid var(--border); color:var(--text); background:rgba(255,255,255,.04); }
+
+  .stats{
+    display:grid; grid-template-columns:repeat(4,1fr); gap:14px;
+    padding:0 8% 70px; max-width:900px; margin-inline:auto;
+  }
+  .stat{
+    background:var(--card); border:1px solid var(--border); border-radius:16px;
+    padding:20px 10px; text-align:center; backdrop-filter:blur(8px);
+  }
+  .stat b{ display:block; font-size:22px; color:var(--primary); }
+  .stat span{ font-size:11px; color:var(--muted); }
+
+  .modes-title{ text-align:center; font-size:22px; font-weight:800; padding:10px 8% 24px; }
+  .modes-title span{ color:var(--primary); }
+  .modes{
+    display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:18px; padding:0 8% 90px;
+  }
+  .mode{
+    background:var(--card); border:1px solid var(--border); border-radius:18px;
+    padding:22px; backdrop-filter:blur(10px);
+    transition:border-color .2s ease, transform .2s ease;
+  }
+  .mode:hover{ border-color:var(--primary); transform:translateY(-4px); }
+  .mode .icon{ font-size:26px; margin-bottom:10px; color:var(--primary); }
+  .mode h3{ font-size:15.5px; margin-bottom:6px; }
+  .mode p{ font-size:12.5px; color:var(--muted); line-height:1.6; }
+
+  .leaderboard{ padding:0 8% 90px; max-width:640px; margin-inline:auto; }
+  .lb-row{
+    display:flex; align-items:center; gap:14px;
+    background:var(--card); border:1px solid var(--border); border-radius:14px;
+    padding:12px 16px; margin-bottom:10px; backdrop-filter:blur(8px);
+  }
+  .lb-rank{
+    width:30px; height:30px; border-radius:50%; display:flex; align-items:center; justify-content:center;
+    background:rgba(255,61,154,.15); color:var(--primary); font-weight:800; font-size:13px; flex-shrink:0;
+  }
+  .lb-name{ flex:1; font-size:13.5px; font-weight:600; }
+  .lb-score{ color:var(--accent); font-weight:800; font-size:13px; }
+
+  footer{ text-align:center; padding:28px 8%; color:var(--muted); font-size:12px; border-top:1px solid var(--border); }
+
+  /* ===== ارتقای Timbo v0.7.1 — انیمیشن ورود، اسکرول‌بار سفارشی، دکمه‌ی بازگشت به بالا ===== */
+  html{scroll-behavior:smooth;}
+  ::selection{background:var(--primary);color:#04120E;}
+  ::-webkit-scrollbar{width:9px;height:9px;}
+  ::-webkit-scrollbar-track{background:transparent;}
+  ::-webkit-scrollbar-thumb{background:var(--primary);border-radius:999px;opacity:.55;}
+  .reveal{opacity:0;transform:translateY(26px);transition:opacity .7s cubic-bezier(.16,.85,.32,1),transform .7s cubic-bezier(.16,.85,.32,1);}
+  .reveal.in-view{opacity:1;transform:translateY(0);}
+  .tb-credit{text-align:center;font-size:11px;letter-spacing:.3px;opacity:.62;margin-top:8px;}
+  .back-top{position:fixed;bottom:22px;inset-inline-end:22px;width:46px;height:46px;border-radius:50%;
+    background:var(--primary);color:#fff;border:none;display:flex;align-items:center;justify-content:center;
+    font-size:19px;cursor:pointer;box-shadow:0 12px 28px rgba(0,0,0,.4);opacity:0;pointer-events:none;
+    transform:translateY(14px);transition:opacity .3s ease,transform .3s ease;z-index:999;}
+  .back-top:hover{transform:translateY(-3px);}
+  .back-top.show{opacity:1;pointer-events:auto;transform:translateY(0);}
+
+  .arena-gallery-title{text-align:center;font-size:20px;font-weight:800;padding:10px 8% 20px;}
+  .arena-gallery-title span{color:var(--primary);}
+  .arena-shots{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;padding:0 8% 90px;}
+  .arena-shot{height:140px;border-radius:16px;background:linear-gradient(135deg,rgba(255,61,154,.25),rgba(124,77,255,.25));border:1px solid var(--border);}
 </style>
 </head>
 <body>
-<nav class="navbar"><span class="nb-logo">slime mc</span><div class="nb-links"><a href="#">خانه</a><a href="#">درباره</a><a href="#">تماس</a></div></nav>
-<section class="hero"><h1>عنوان اصلی سایت شما</h1><p>یک توضیح کوتاه و جذاب درباره‌ی کسب‌وکار یا پروژه‌ات بنویس.</p><div class="hero-ctas"><a class="cta" href="#">شروع کن</a><a class="cta-ghost" href="#">بیشتر بدان</a></div></section>
-<hr>
-<section class="button-block"><a class="btn-solid" href="#">دانلود تی لانچر</a></section>
+  <nav>
+    <div class="logo">نئون <span>آرنا</span></div>
+    <div>
+      <a href="#">بازی‌ها</a>
+      <a href="#">رتبه‌بندی</a>
+      <a href="#">ورود</a>
+    </div>
+  </nav>
 
+  <section class="hero">
+    <span class="tag">◆ نسخه‌ی ۲.۴ منتشر شد</span>
+    <h1>وارد <span>آرنای نئونی</span> شو</h1>
+    <p>رقابت زنده، گرافیک سایبرپانک و جدول رتبه‌بندی جهانی — همین حالا بازی کن و رتبه‌ات را بالا ببر.</p>
+    <div class="cta-row">
+      <a class="cta primary" href="#">شروع بازی</a>
+      <a class="cta ghost" href="#">مشاهده تریلر</a>
+    </div>
+  </section>
+
+  <div class="stats">
+    <div class="stat"><b>۱۲۰K+</b><span>بازیکن فعال</span></div>
+    <div class="stat"><b>۴.۸</b><span>امتیاز کاربران</span></div>
+    <div class="stat"><b>۶</b><span>حالت بازی</span></div>
+    <div class="stat"><b>۲۴/۷</b><span>سرور آنلاین</span></div>
+  </div>
+
+  <div class="modes-title">حالت‌های <span>بازی</span></div>
+  <div class="modes">
+    <div class="mode"><div class="icon">◈</div><h3>نبرد تیمی</h3><p>۵ در برابر ۵، حذفی و سریع.</p></div>
+    <div class="mode"><div class="icon">◆</div><h3>بقا</div><p>در برابر موج‌های بی‌پایان دشمن دوام بیاور.</p></div>
+    <div class="mode"><div class="icon">◇</div><h3>رنکد</h3><p>رقابت رسمی برای صعود در جدول امتیازات.</p></div>
+  </div>
+
+  <div class="leaderboard">
+    <div class="lb-row"><div class="lb-rank">۱</div><div class="lb-name">Shadow_FA</div><div class="lb-score">۹۸٬۴۰۰</div></div>
+    <div class="lb-row"><div class="lb-rank">۲</div><div class="lb-name">NeonRider</div><div class="lb-score">۹۱٬۲۰۰</div></div>
+    <div class="lb-row"><div class="lb-rank">۳</div><div class="lb-name">Aria_X</div><div class="lb-score">۸۷٬۹۵۰</div></div>
+  </div>
+
+  
+  <div class="arena-gallery-title">نمای <span>درون بازی</span></div>
+  <div class="arena-shots">
+    <div class="arena-shot"></div><div class="arena-shot"></div><div class="arena-shot"></div>
+  </div>
+<footer>© نئون آرنا — نمونه‌ی قالب ساخته‌شده در Timbo (Sorthan Studios)<div class="tb-credit">By Sorthan Studios · EsterLoc Studios — Timbo v0.7.1</div></footer>
+
+<script>
+(function(){
+  var targets = document.querySelectorAll('.card,.project,.feature,.mode,.stat-card,.menu-item,.product,.post,.panel,.stat,.lb-row,.tx-row,.t-card,.review,.cafe-review,.fit-review,.pf-card,.shot,.arena-shot,.qa-btn,.skill-row');
+  targets.forEach(function(el,i){
+    el.classList.add('reveal');
+    el.style.transitionDelay = (Math.min(i,10)*0.05)+'s';
+  });
+  if('IntersectionObserver' in window){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(entry.isIntersecting){ entry.target.classList.add('in-view'); io.unobserve(entry.target); }
+      });
+    },{threshold:.12});
+    targets.forEach(function(el){ io.observe(el); });
+  } else {
+    targets.forEach(function(el){ el.classList.add('in-view'); });
+  }
+  var backBtn = document.createElement('button');
+  backBtn.className = 'back-top';
+  backBtn.setAttribute('aria-label','برو بالا');
+  backBtn.innerHTML = '&uarr;';
+  document.body.appendChild(backBtn);
+  backBtn.addEventListener('click', function(){ window.scrollTo({top:0,behavior:'smooth'}); });
+  window.addEventListener('scroll', function(){
+    if(window.scrollY > 380){ backBtn.classList.add('show'); } else { backBtn.classList.remove('show'); }
+  });
+})();
+</script>
 </body>
 </html>
