@@ -1,347 +1,1562 @@
 <!DOCTYPE html>
-<html lang="fa" dir="rtl">
+<html lang="fa">
 <head>
-<meta charset="UTF-8">
-<title>Slime MC | سرور ماینکرفت</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="بهترین سرور ماینکرفت با گیم‌مود اسکای‌بلاک، لانچرهای اختصاصی و جامعه‌ای پویا">
-<meta property="og:title" content="Slime MC - سرور ماینکرفت">
-<meta property="og:description" content="به دنیای اسلایمی‌ها خوش آمدید!">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>اسلایم ام سی | SlimeMC</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="icon" type="image/png" href="https://cdn.imgurl.ir/uploads/w788606_IMG_20260913_004838_706.jpg" />
+    <style>
+        /* =====================================================
+   اسلایم ام سی - استایل کامل
+   تم سبز و سفید
+===================================================== */
 
-<style>
-  :root {
-    --primary: #00ff88;
-    --primary-dark: #00cc66;
-    --primary-glow: rgba(0, 255, 136, 0.3);
-    --dark-bg: #0a0e0f;
-    --card-bg: rgba(255,255,255,0.04);
-    --text-light: #e8f0f0;
-    --text-muted: #88a0a0;
-    --border-color: rgba(0, 255, 136, 0.15);
-    --site-font: 'وزیرمتن','Vazirmatn','Segoe UI',Tahoma,sans-serif;
-  }
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-   { box-sizing:border-box; margin:0; padding:0; }
+html {
+    scroll-behavior: smooth;
+}
 
-  body {
-    font-family: var(--site-font);
-    background: var(--dark-bg);
-    color: var(--text-light);
-    line-height: 1.7;
-    min-height: 100vh;
-  }
+body {
+    font-family: 'Tahoma', 'Segoe UI', sans-serif;
+    background: #f0f9f0;
+    color: #1a3a1a;
+    direction: rtl;
+    text-align: right;
+    line-height: 1.8;
+    overflow-x: hidden;
+}
 
-  a { color:inherit; text-decoration:none; transition:0.3s; }
-  a:hover { color: var(--primary); }
 
-  / اسکرول بار سفارشی /
-  ::-webkit-scrollbar { width:8px; }
-  ::-webkit-scrollbar-track { background:var(--dark-bg); }
-  ::-webkit-scrollbar-thumb { background:var(--primary); border-radius:10px; }
 
-  .container { max-width:1200px; margin:0 auto; padding:0 20px; }
+/* =====================================================
+   انیمیشن‌های عمومی
+===================================================== */
 
-  / نوار ناوبری /
-  .navbar {
-    display:flex; justify-content:space-between; align-items:center;
-    padding:16px 20px; background:rgba(10,14,15,0.92);
-    backdrop-filter:blur(12px); border-bottom:1px solid var(--border-color);
-    position:sticky; top:0; z-index:100;
-  }
-  .navbar .nb-logo {
-    font-weight:800; font-size:20px;
-    background:linear-gradient(135deg, var(--primary), #00ddff);
-    -webkit-background-clip:text; -webkit-text-fill-color:transparent;
-    letter-spacing:0.5px;
-  }
-  .navbar .nb-links{ display:flex; gap:24px; align-items:center; }
-  .navbar .nb-links a {
-    font-size:14px; color:var(--text-muted);
-    transition:0.3s; position:relative;
-  }
-  .navbar .nb-links a:hover { color:var(--primary); }
-  .navbar .nb-links a::after {
-    content:''; position:absolute; bottom:-4px; left:0; width:0; height:2px;
-    background:var(--primary); transition:0.3s;
-  }
-  .navbar .nb-links a:hover::after { width:100%; }
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
 
-  / هدر اصلی */
-  .hero {
-    padding:100px 20px 80px; text-align:center;
-    background: radial-gradient(ellipse at 30% 20%, rgba(0,255,136,0.08) 0%, transparent 60%),
-                radial-gradient(ellipse at 70% 80%, rgba(0,200,255,0.05) 0%, transparent 50%),
-                var(--dark-bg);
-    position:relative; overflow:hidden;
-  }
-  .hero::before {
-    content:''; position:absolute; inset:0;
-    background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%2300ff88' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-    opacity:0.5;
-  }
-  .hero h1 {
-    font-size: clamp(32px, 6vw, 54px);
-    font-weight:800; line-height:1.2;
-    background:linear-gradient(135deg, #fff 30%, var(--primary) 100%);
-    -webkit-background-clip:text; -webkit-text-fill-color:transparent;
-    margin-bottom:20px; position:relative;
-  }
-  .hero p {
-    font-size:17px; color:var(--text-muted);
-    max-width:560px; margin:0 auto 32px; position:relative;
-  }
-  .hero-ctas {
-    display:flex; gap:16px; justify-content:center;
-    flex-wrap:wrap; position:relative;
-  }
-  .cta, .btn-solid {
-    display:inline-block; padding:14px 36px; border-radius:50px;
-    background:linear-gradient(135deg, var(--primary), var(--primary-dark));
-    color:#04140F; font-weight:700; font-size:15px;
-    border:none; transition:0.3s; box-shadow:0 0 30px var(--primary-glow);
-    cursor:pointer;
-  }
-  .cta:hover, .btn-solid:hover {
-    transform:translateY(-2px) scale(1.02);
-    box-shadow:0 0 50px var(--primary-glow);
-  }
-  .cta-ghost, .btn-out
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
 
-line {
-    display:inline-block; padding:14px 36px; border-radius:50px;
-    border:1.5px solid rgba(255,255,255,0.3);
-    color:var(--text-light); font-weight:600; font-size:15px;
-    background:transparent; transition:0.3s; cursor:pointer;
-  }
-  .cta-ghost:hover, .btn-outline:hover {
-    border-color:var(--primary); color:var(--primary);
-    box-shadow:0 0 30px rgba(0,255,136,0.1);
-  }
+@keyframes float {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-12px); }
+    100% { transform: translateY(0); }
+}
 
-  /* بخش‌های عمومی /
-  .section {
-    padding:70px 20px;
-    border-bottom:1px solid var(--border-color);
-  }
-  .section:last-of-type { border-bottom:none; }
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
 
-  .section-title {
-    font-size:26px; font-weight:800; text-align:center;
-    margin-bottom:12px;
-  }
-  .section-title span { color:var(--primary); }
-  .section-sub {
-    text-align:center; color:var(--text-muted);
-    font-size:15px; max-width:600px; margin:0 auto 40px;
-  }
+@keyframes slideDown {
+    from { transform: translateY(-100%); }
+    to { transform: translateY(0); }
+}
 
-  / بلوک‌های دانلود لانچر /
-  .launcher-grid {
-    display:grid; grid-template-columns:repeat(auto-fit, minmax(240px,1fr));
-    gap:20px; max-width:900px; margin:0 auto;
-  }
-  .launcher-card {
-    background:var(--card-bg); border:1px solid var(--border-color);
-    border-radius:16px; padding:28px 24px;
-    text-align:center; transition:0.4s;
-    backdrop-filter:blur(4px);
-  }
-  .launcher-card:hover {
-    transform:translateY(-4px);
-    border-color:var(--primary);
-    box-shadow:0 8px 40px rgba(0,255,136,0.06);
-  }
-  .launcher-card .btn-solid { font-size:13px; padding:12px 28px; }
-  .launcher-card .icon { font-size:32px; margin-bottom:8px; }
+@keyframes shine {
+    0% { background-position: -200% center; }
+    100% { background-position: 200% center; }
+}
 
-  / گالری /
-  .gallery-block .gal-grid {
-    display:grid; grid-template-columns:repeat(auto-fit, minmax(200px,1fr));
-    gap:16px; max-width:1100px; margin:0 auto;
-  }
-  .gallery-block img {
-    width:100%; height:200px; object-fit:cover;
-    border-radius:16px; border:1px solid var(--border-color);
-    transition:0.5s; cursor:pointer;
-  }
-  .gallery-block img:hover {
-    transform:scale(1.03); border-color:var(--primary);
-    box-shadow:0 8px 40px rgba(0,255,136,0.08);
-  }
+@keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
 
-  / قیمت‌گذاری /
-  .pricing-block {
-    display:grid; grid-template-columns:repeat(auto-fit, minmax(220px,1fr));
-    gap:24px; max-width:960px; margin:0 auto;
-  }
-  .pr {
-    background:var(--card-bg); border:1px solid var(--border-color);
-    border-radius:20px; padding:32px 24px; text-align:center;
-    transition:0.4s; backdrop-filter:blur(4px);
-  }
-  .pr:hover { border-color:var(--primary); transform:translateY(-4px); }
-  .pr.featured { border-color:var(--primary); box-shadow:0 0 40px rgba(0,255,136,0.05); }
-  .pr-name { font-weight:700; font-size:15px; color:var(--text-muted); }
-  .pr-price { font-size:32px; font-weight:800; margin:12px 0; color:#fff; }
-  .pr-price small { font-size:16px; color:var(--text-muted); }
-  .pr ul { list-style:none; font-size:13.5px; color:var(--text-muted); margin:20px 0; }
-  .pr ul li { padding:6px 0; }
-  .pr ul li::before { content:'✓ '; color:var(--primary); }
-  .pr-cta {
-    display:inline-block; padding:12px 32px; border-radius:50px;
-    background:linear-gradient(135deg, var(--primary), var(--primary-dark));
-    color:#04140F; font-weight:700; font-size:14px;
-    transition:0.3s; border:none; cursor:pointer;
-  }
-  .pr-cta:hover { transform:scale(1.04); box-shadow:0 0 30px var(--primary-glow); }
+/* =====================================================
+   منوی بالا
+===================================================== */
 
-  / تیم /
-  .team-grid {
-    display:grid; grid-template-columns:repeat(auto-fit, minmax(180px,1fr));
-    gap:30px; max-width:800px; margin:0 auto;
-  }
-  .tmm { text-align:center; }
-  .tmm img {
-    width:110px; height:110px; border-radius:50%; object-fit:cover;
-    border:2px solid var(--border-color); margin:0 auto 14px;
-    transition:0.4s;
-  }
-  .tmm img:hover { border-color:var(--primary); transform:scale(1.04); }
-  .tmm-name { font-weight:700; font-size:15px; }
-  .tmm-role { font-size:12px; color:var(--text-muted); }
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    padding: 18px 40px;
+    border-bottom: 3px solid #4caf50;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 15px rgba(76, 175, 80, 0.15);
+    animation: slideDown 0.6s ease-out;
+}
 
-  / پرسش‌های متداول */
-  .faq-block { max-width:720px; margin:0 auto; }
-  .faq-block details {
-    border-bottom:1px solid var(--border-color); padding:16px 0;
-  }
-  .faq-block summary {
-    cursor:pointer; font-weight:700; font-size:15px;
-    color:var(--text-light); list-style:none;
-    display:flex; justify-content:space-between; align-i
+.navbar .logo {
+    font-size: 1.6rem;
+    font-weight: bold;
+    color: #2e7d32;
+    animation: pulse 2s infinite;
+    cursor: pointer;
+}
 
-tems:center;
-  }
-  .faq-block summary::-webkit-details-marker { display:none; }
-  .faq-block summary::after {
-    content:'+'; font-size:22px; color:var(--primary);
-    transition:0.3s;
-  }
-  .faq-block details[open] summary::after { transform:rotate(45deg); }
-  .faq-block p { margin-top:12px; font-size:14px; color:var(--text-muted); padding-right:8px; }
+.navbar .menu {
+    display: flex;
+    align-items: center;
+}
 
-  /* آمار /
-  .stats-block {
-    display:flex; flex-wrap:wrap; justify-content:center;
-    gap:48px; padding:60px 20px;
-    background:var(--card-bg); border-top:1px solid var(--border-color);
-  }
-  .stats-block .st { text-align:center; }
-  .stats-block b { display:block; font-size:32px; color:var(--primary); }
-  .stats-block span { font-size:13px; color:var(--text-muted); }
+.navbar .menu a {
+    color: #1a3a1a;
+    text-decoration: none;
+    margin: 0 15px;
+    font-weight: bold;
+    position: relative;
+    transition: color 0.3s;
+}
 
-  / پادکست / ویدیو /
-  .video-wrapper {
-    max-width:800px; margin:0 auto;
-    border-radius:16px; overflow:hidden;
-    border:1px solid var(--border-color);
-  }
-  .video-wrapper iframe {
-    width:100%; aspect-ratio:16/9; border:none; display:block;
-  }
+.navbar .menu a::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    right: 0;
+    width: 0;
+    height: 2px;
+    background: #4caf50;
+    transition: width 0.3s;
+}
 
-  / فوتر /
-  footer {
-    padding:40px 20px; text-align:center;
-    background:rgba(0,0,0,0.4);
-    border-top:1px solid var(--border-color);
-    color:var(--text-muted); font-size:13px;
-  }
-  footer .social {
-    display:flex; justify-content:center; gap:16px; margin-bottom:16px;
-  }
-  footer .social a {
-    width:40px; height:40px; border-radius:50%;
-    border:1px solid var(--border-color);
-    display:flex; align-items:center; justify-content:center;
-    font-size:18px; transition:0.3s;
-  }
-  footer .social a:hover { border-color:var(--primary); color:var(--primary); }
+.navbar .menu a:hover {
+    color: #4caf50;
+}
 
-  / ریسپانسیو */
-  @media(max-width:768px) {
-    .navbar { flex-direction:column; gap:12px; padding:12px 16px; }
-    .navbar .nb-links { gap:16px; flex-wrap:wrap; justify-content:center; }
-    .hero { padding:60px 16px 50px; }
-    .hero h1 { font-size:28px; }
-    .section { padding:50px 16px; }
-    .stats-block { gap:28px; }
-    .pricing-block { grid-template-columns:1fr; max-width:400px; }
-    .launcher-grid { grid-template-columns:1fr; max-width:400px; }
-  }
-  @media(max-width:480px) {
-    .hero-ctas .cta, .hero-ctas .cta-ghost { width:100%; text-align:center; }
-    .gallery-block .gal-grid { grid-template-columns:1fr 1fr; }
-    .gallery-block img { height:150px; }
-  }
-</style>
+.navbar .menu a:hover::after {
+    width: 100%;
+}
+
+/* =====================================================
+   بخش خانه (Hero)
+===================================================== */
+
+.hero {
+    text-align: center;
+    padding: 120px 20px;
+    background: linear-gradient(135deg, #4caf50, #2e7d32);
+    color: white;
+    position: relative;
+    overflow: hidden;
+    animation: fadeIn 1s;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    width: 400px;
+    height: 400px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    top: -100px;
+    right: -100px;
+    animation: float 6s infinite;
+}
+
+.hero::after {
+    content: '';
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 50%;
+    bottom: -80px;
+    left: -80px;
+    animation: float 8s infinite;
+}
+
+.hero h1 {
+    font-size: 3rem;
+    margin-bottom: 15px;
+    position: relative;
+    z-index: 2;
+    animation: fadeInUp 0.8s;
+    text-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.hero p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+    position: relative;
+    z-index: 2;
+    animation: fadeInUp 1s;
+    opacity: 0.95;
+}
+
+.hero-buttons {
+    position: relative;
+    z-index: 2;
+    animation: fadeInUp 1.2s;
+}
+
+.btn {
+    display: inline-block;
+    background: #ffffff;
+    color: #2e7d32;
+    padding: 12px 40px;
+    border-radius: 40px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: all 0.3s;
+    margin: 5px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+}.btn:hover {
+    transform: translateY(-4px) scale(1.05);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+}
+
+.btn-discord {
+    display: inline-block;
+    background: #5865F2;
+    color: white;
+    padding: 12px 40px;
+    border-radius: 40px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: all 0.3s;
+    margin: 5px;
+    box-shadow: 0 5px 20px rgba(88, 101, 242, 0.4);
+}
+
+.btn-discord:hover {
+    background: #4752c4;
+    transform: translateY(-4px) scale(1.05);
+    box-shadow: 0 10px 30px rgba(88, 101, 242, 0.6);
+}
+
+/* =====================================================
+   تیترهای اصلی
+===================================================== */
+
+h2 {
+    font-size: 2.2rem;
+    color: #2e7d32;
+    text-align: center;
+    margin: 70px 0 20px;
+    position: relative;
+    animation: fadeInUp 0.6s;
+}
+
+h2::after {
+    content: '';
+    display: block;
+    width: 80px;
+    height: 4px;
+    background: linear-gradient(90deg, #4caf50, #2e7d32);
+    margin: 12px auto 0;
+    border-radius: 10px;
+}
+
+.sub {
+    text-align: center;
+    color: #555;
+    margin-bottom: 30px;
+    animation: fadeInUp 0.8s;
+    font-size: 1.05rem;
+}
+
+/* =====================================================
+   گالری نمای سرور
+===================================================== */
+
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+    padding: 20px 40px;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.gallery img {
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+    border-radius: 14px;
+    border: 3px solid #4caf50;
+    transition: all 0.4s;
+    cursor: pointer;
+    animation: fadeInUp 0.5s;
+}
+
+.gallery img:hover {
+    transform: scale(1.05) rotate(1deg);
+    border-color: #2e7d32;
+    box-shadow: 0 10px 30px rgba(76, 175, 80, 0.3);
+}
+
+/* =====================================================
+   فروشگاه رنک
+===================================================== */
+
+.shop {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+    padding: 20px 40px;
+}
+
+.rank {
+    background: #ffffff;
+    border: 2px solid #c8e6c9;
+    border-radius: 20px;
+    padding: 25px;
+    width: 280px;
+    text-align: center;
+    transition: all 0.4s;
+    box-shadow: 0 4px 15px rgba(76, 175, 80, 0.08);
+    position: relative;
+    overflow: hidden;
+    animation: fadeInUp 0.6s;
+}
+
+.rank::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(76, 175, 80, 0.1), transparent);
+    transition: left 0.6s;
+}
+
+.rank:hover::before {
+    left: 100%;
+}
+
+.rank:hover {
+    border-color: #4caf50;
+    transform: translateY(-10px);
+    box-shadow: 0 15px 40px rgba(76, 175, 80, 0.25);
+}
+
+.rank h3 {
+    color: #2e7d32;
+    font-size: 1.6rem;
+    margin: 10px 0;
+}
+
+.rank p {
+    color: #555;
+    font-size: 0.95rem;
+    margin-bottom: 10px;
+}
+
+.rank .price {
+    display: block;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #f57c00;
+    margin: 15px 0;
+}
+
+.btn-buy {
+    display: inline-block;
+    background: #4caf50;
+    color: white;
+    padding: 10px 30px;
+    border-radius: 40px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: all 0.3s;
+}
+
+.btn-buy:hover {
+    background: #2e7d32;
+    transform: scale(1.08);
+    box-shadow: 0 8px 25px rgba(76, 175, 80, 0.4);
+}
+
+/* =====================================================
+   اطلاعات پرداخت
+===================================================== */
+
+.payment-box {
+    max-width: 650px;
+    margin: 0 auto;
+    padding: 35px;
+    background: #ffffff;
+    border-radius: 24px;
+    border: 2px dashed #4caf50;
+    text-align: right;
+    animation: fadeInUp 0.6s;
+    box-shadow: 0 6px 30px rgba(76, 175, 80, 0.1);
+}
+
+.payment-intro {
+    text-align: center;
+    font-size: 1.1rem;
+    color: #2e7d32;
+    font-weight: bold;
+    margin-bottom: 25px;
+}
+
+.card-info {
+    text-align: center;
+    margin: 25px 0;
+    padding: 20px;
+    background: #f0f9f0;
+    border-radius: 16px;
+    border: 2px solid #c8e6c9;
+}#cardNumber {
+    display: inline-block;
+    background: #ffffff;
+    padding: 15px 30px;
+    border-radius: 12px;
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: #2e7d32;
+    letter-spacing: 2px;
+    border: 2px solid #4caf50;
+    margin-bottom: 15px;
+    animation: pulse 2s infinite;
+}
+
+.card-info button {
+    display: block;
+    margin: 0 auto;
+    background: #4caf50;
+    color: white;
+    padding: 10px 30px;
+    border: none;
+    border-radius: 40px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-family: inherit;
+}
+
+.card-info button:hover {
+    background: #2e7d32;
+    transform: scale(1.05);
+    box-shadow: 0 8px 25px rgba(76, 175, 80, 0.4);
+}
+
+/* مراحل خرید */
+.payment-steps {
+    background: #f0f9f0;
+    padding: 20px 25px;
+    border-radius: 16px;
+    margin: 20px 0;
+    border-right: 5px solid #4caf50;
+}
+
+.payment-steps h3 {
+    color: #2e7d32;
+    margin-bottom: 12px;
+    font-size: 1.2rem;
+}
+
+.payment-steps ol {
+    padding-right: 25px;
+    color: #1a3a1a;
+    line-height: 2;
+}
+
+.payment-steps ol li {
+    margin-bottom: 6px;
+}
+
+/* هشدارها */
+.payment-warnings {
+    background: #fff3e0;
+    padding: 20px 25px;
+    border-radius: 16px;
+    margin-top: 20px;
+    border-right: 5px solid #f57c00;
+    animation: pulse 4s infinite;
+}
+
+.payment-warnings h3 {
+    color: #000000;
+    margin-bottom: 12px;
+    font-size: 1.2rem;
+}
+
+.payment-warnings ul {
+    list-style: none;
+    padding: 0;
+    color: #fc2600;
+    line-height: 2;
+}
+
+.payment-warnings ul li {
+    margin-bottom: 6px;
+    padding-right: 5px;
+}
+
+/* =====================================================
+   تیزر (ویدیو)
+===================================================== */
+
+.teaser {
+    text-align: center;
+    padding: 0 40px;
+}
+
+.teaser video {
+    max-width: 100%;
+    border-radius: 20px;
+    border: 3px solid #4caf50;
+    box-shadow: 0 15px 40px rgba(76, 175, 80, 0.2);
+    animation: fadeInUp 0.8s;
+}
+
+/* =====================================================
+   دست‌اندرکاران
+===================================================== */
+
+.staff {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    flex-wrap: wrap;
+    padding: 20px 40px;
+}
+
+.member {
+    background: #ffffff;
+    padding: 25px 20px;
+    border-radius: 20px;
+    text-align: center;
+    border: 2px solid #c8e6c9;
+    width: 180px;
+    transition: all 0.4s;
+    box-shadow: 0 4px 15px rgba(76, 175, 80, 0.08);
+    animation: fadeInUp 0.6s;
+}
+
+.member:hover {
+    border-color: #4caf50;
+    transform: translateY(-10px);
+    box-shadow: 0 15px 35px rgba(76, 175, 80, 0.25);
+}
+
+.member img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #4caf50;
+    margin-bottom: 10px;
+    transition: all 0.4s;
+}
+
+.member:hover img {
+    transform: scale(1.1) rotate(5deg);
+    border-color: #2e7d32;
+}
+
+.member h3 {
+    color: #2e7d32;
+    font-size: 1.2rem;
+    margin-bottom: 4px;
+}
+
+.member p {
+    color: #666;
+    font-size: 0.9rem;
+}
+
+/* =====================================================
+   آی‌پی سرور
+===================================================== */
+
+.ip-box {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+#ipText {
+    display: inline-block;
+    background: #ffffff;
+    padding: 15px 40px;
+    border-radius: 40px;
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: #2e7d32;
+    margin-bottom: 15px;
+    border: 2px solid #4caf50;
+    animation: pulse 2s infinite;
+    box-shadow: 0 5px 20px rgba(76, 175, 80, 0.2);
+}
+
+.ip-box button {
+    display: block;
+    margin: 0 auto;
+    background: #4caf50;
+    color: white;
+    padding: 12px 40px;
+    border: none;
+    border-radius: 40px;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: all 0.3s;
+    font-family: inherit;
+}
+
+.ip-box button:hover {
+    background: #2e7d32;
+    transform: scale(1.05);
+    box-shadow: 0 8px 25px rgba(76, 175, 80, 0.4);
+}
+
+/* =====================================================
+   فوتر
+===================================================== */.footer {
+    text-align: center;
+    padding: 30px;
+    background: #ffffff;
+    border-top: 3px solid #4caf50;
+    color: #666;
+    animation: fadeIn 1s;
+}
+
+.discord-link {
+    display: inline-block;
+    margin-top: 10px;
+    color: #5865F2;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.discord-link:hover {
+    text-decoration: underline;
+    transform: scale(1.05);
+}
+
+/* =====================================================
+   ریسپانسیو (گوشی و تبلت)
+===================================================== */
+
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        gap: 15px;
+        padding: 15px 20px;
+    }
+
+    .navbar .menu {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .navbar .menu a {
+        margin: 4px 8px;
+        font-size: 0.85rem;
+    }
+
+    .navbar .logo {
+        font-size: 1.3rem;
+    }
+
+    .hero {
+        padding: 80px 15px;
+    }
+
+    .hero h1 {
+        font-size: 2rem;
+    }
+
+    .hero p {
+        font-size: 1rem;
+    }
+
+    .gallery {
+        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+        padding: 15px;
+    }
+
+    .gallery img {
+        height: 120px;
+    }
+
+    .shop, .staff {
+        padding: 20px;
+    }
+
+    .rank {
+        width: 100%;
+        max-width: 300px;
+    }
+
+    .payment-box {
+        margin: 0 20px;
+        padding: 25px 20px;
+    }
+
+    #cardNumber {
+        font-size: 1.1rem;
+        padding: 12px 20px;
+    }
+
+    .member {
+        width: 140px;
+    }
+
+    .member img {
+        width: 80px;
+        height: 80px;
+    }
+
+    h2 {
+        font-size: 1.6rem;
+        margin: 50px 0 15px;
+    }
+
+    .teaser {
+        padding: 0 20px;
+    }
+
+    #ipText {
+        font-size: 1.1rem;
+        padding: 12px 25px;
+    }
+}
+
+/* =====================================================
+   برای گوشی‌های خیلی کوچیک
+===================================================== */
+
+@media (max-width: 400px) {
+    .hero h1 {
+        font-size: 1.6rem;
+    }
+
+    .gallery {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .member {
+        width: 120px;
+        padding: 20px 12px;
+    }
+
+    .member img {
+        width: 70px;
+        height: 70px;
+    }
+
+    .member h3 {
+        font-size: 1rem;
+    }
+}/* دکمه روبیکا */
+.btn-rubika {
+    display: inline-block;
+    background: #e91e63;
+    color: white;
+    padding: 12px 40px;
+    border-radius: 40px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: all 0.3s;
+    margin: 5px;
+    box-shadow: 0 5px 20px rgba(233, 30, 99, 0.4);
+}
+
+.btn-rubika:hover {
+    background: #c2185b;
+    transform: translateY(-4px) scale(1.05);
+    box-shadow: 0 10px 30px rgba(233, 30, 99, 0.6);
+}
+
+/* لینک روبیکا در فوتر */
+.rubika-link {
+    display: inline-block;
+    margin-top: 10px;
+    margin-right: 15px;
+    color: #e91e63;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.rubika-link:hover {
+    text-decoration: underline;
+    transform: scale(1.05);
+}
+
+/* دکمه دارک مود */
+.theme-btn {
+    background: #4caf50;
+    color: white;
+    border: none;
+    padding: 8px 18px;
+    border-radius: 40px;
+    cursor: pointer;
+    font-weight: bold;
+    font-family: inherit;
+    font-size: 0.9rem;
+    margin-right: 15px;
+    transition: 0.3s;
+    box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
+}
+
+.theme-btn:hover {
+    background: #2e7d32;
+    transform: scale(1.05);
+}
+
+/* =====================================================
+   دارک مود
+===================================================== */
+
+body.dark {
+    background: #0f1a0f;
+    color: #d4e8d4;
+}
+
+/* منوی بالا */
+body.dark .navbar {
+    background: rgba(15, 26, 15, 0.39);
+    border-bottom-color: #4caf4f6c;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.5);
+}
+
+body.dark .navbar .logo {
+    color: #4caf50;
+}
+
+body.dark .navbar .menu a {
+    color: #d4e8d4;
+}
+
+body.dark .navbar .menu a:hover {
+    color: #4caf50;
+}
+
+/* خانه */
+body.dark .hero {
+    background: linear-gradient(135deg, #1b3a1b, #0f1a0f);
+}
+
+/* تیترها */
+body.dark h2 {
+    color: #6ac045;
+}
+
+body.dark h2::after {
+    background: linear-gradient(90deg, #4caf50, #6ac045);
+}
+
+body.dark .sub {
+    color: #a0b8a0;
+}
+
+/* گالری */
+body.dark .gallery img {
+    border-color: #4caf50;
+}
+
+/* فروشگاه */
+body.dark .rank {
+    background: #16261a;
+    border-color: #2a4a2a;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+body.dark .rank:hover {
+    border-color: #4caf50;
+    box-shadow: 0 15px 40px rgba(76, 175, 80, 0.2);
+}
+
+body.dark .rank h3 {
+    color: #6ac045;
+}
+
+body.dark .rank p {
+    color: #a0b8a0;
+}
+
+body.dark .rank .price {
+    color: #ffb74d;
+}
+
+/* اطلاعات پرداخت */
+body.dark .payment-box {
+    background: #16261a;
+    border-color: #4caf50;
+    box-shadow: 0 6px 30px rgba(0, 0, 0, 0.4);
+}
+
+body.dark .payment-intro {
+    color: #6ac045;
+}
+
+body.dark .card-info {
+    background: #0f1a0f;
+    border-color: #2a4a2a;
+}
+
+body.dark #cardNumber {
+    background: #16261a;
+    color: #6ac045;
+    border-color: #4caf50;
+}
+
+body.dark .payment-steps {
+    background: #0f1a0f;
+    border-right-color: #4caf50;
+}
+
+body.dark .payment-steps h3 {
+    color: #6ac045;
+}
+
+body.dark .payment-steps ol {
+    color: #d4e8d4;
+}
+
+body.dark .payment-warnings {
+    background: #2a1f0f;
+    border-right-color: #f57c00;
+}
+
+body.dark .payment-warnings h3 {
+    color: #ffb74d;
+}
+
+body.dark .payment-warnings ul {
+    color: #e0d0b0;
+}
+
+/* تیزر */
+body.dark .teaser video {
+    border-color: #4caf50;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
+}
+
+/* دست‌اندرکاران */
+body.dark .member {
+    background: #16261a;
+    border-color: #2a4a2a;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+body.dark .member:hover {
+    border-color: #4caf50;
+    box-shadow: 0 15px 35px rgba(76, 175, 80, 0.2);
+}
+
+body.dark .member h3 {
+    color: #6ac045;
+}
+
+body.dark .member p {
+    color: #a0b8a0;
+}
+
+/* آی‌پی */
+body.dark #ipText {
+    background: #16261a;
+    color: #6ac045;
+    border-color: #4caf50;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
+}
+
+/* فوتر */
+body.dark .footer {
+    background: #0a140a;
+    border-top-color: #4caf50;
+    color: #a0b8a0;
+}
+
+/* دکمه دارک مود در حالت دارک */
+body.dark .theme-btn {
+    background: #ffb74d;
+    color: #0f1a0f;
+}
+
+body.dark .theme-btn:hover {
+    background: #ffa726;
+}
+
+/* =====================================================
+   آمار زنده سرور
+===================================================== */
+
+.stats-box {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px 40px;
+}
+
+.stat-item {
+    background: #ffffff;
+    border: 2px solid #c8e6c9;
+    border-radius: 18px;
+    padding: 25px 20px;
+    text-align: center;
+    transition: all 0.4s;
+    box-shadow: 0 4px 15px rgba(76, 175, 80, 0.08);
+    animation: fadeInUp 0.6s;
+}
+
+.stat-item:hover {
+    border-color: #4caf50;
+    transform: translateY(-6px);
+    box-shadow: 0 12px 30px rgba(76, 175, 80, 0.2);
+}
+
+.stat-item h3 {
+    color: #2e7d32;
+    font-size: 1.05rem;
+    margin-bottom: 10px;
+}
+
+.stat-value {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #4caf50;
+    animation: pulse 2s infinite;
+}
+
+/* دارک مود */
+body.dark .stat-item {
+    background: #16261a;
+    border-color: #2a4a2a;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+body.dark .stat-item:hover {
+    border-color: #4caf50;
+    box-shadow: 0 12px 30px rgba(76, 175, 80, 0.2);
+}
+
+body.dark .stat-item h3 {
+    color: #6ac045;
+}
+
+body.dark .stat-value {
+    color: #6ac045;
+}
+
+/* ریسپانسیو */
+@media (max-width: 768px) {
+    .stats-box {
+        padding: 15px;
+    }
+
+    .stat-item {
+        padding: 20px 15px;
+    }
+
+    .stat-value {
+        font-size: 1.5rem;
+    }
+}
+
+/* =====================================================
+   اطلاعات سرور (آیکون + MOTD + آمار)
+===================================================== */
+
+.server-info-box {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 30px 20px;
+    animation: fadeInUp 0.6s;
+}
+
+/* هدر سرور (آیکون + MOTD) */
+.server-header-info {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    background: #ffffff;
+    padding: 25px;
+    border-radius: 24px;
+    border: 2px solid #c8e6c9;
+    box-shadow: 0 6px 30px rgba(76, 175, 80, 0.1);
+    margin-bottom: 25px;
+}
+
+.server-icon {
+    width: 96px;
+    height: 96px;
+    border-radius: 18px;
+    border: 3px solid #4caf50;
+    object-fit: cover;
+    image-rendering: pixelated;
+    box-shadow: 0 6px 20px rgba(76, 175, 80, 0.3);
+    animation: float 4s infinite;
+}
+
+.server-motd {
+    flex: 1;
+    text-align: right;
+}
+
+.server-motd p {
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: #2e7d32;
+    line-height: 1.6;
+}
+
+.server-motd p:last-child {
+    font-size: 1rem;
+    color: #666;
+    font-weight: normal;
+}
+
+/* آمار */
+.stats-box {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 18px;
+}
+
+.stat-item {
+    background: #ffffff;
+    border: 2px solid #c8e6c9;
+    border-radius: 18px;
+    padding: 22px 15px;
+    text-align: center;
+    transition: all 0.4s;
+    box-shadow: 0 4px 15px rgba(76, 175, 80, 0.08);
+}
+
+.stat-item:hover {
+    border-color: #4caf50;
+    transform: translateY(-6px);
+    box-shadow: 0 12px 30px rgba(76, 175, 80, 0.2);
+}
+
+.stat-item h3 {
+    color: #2e7d32;
+    font-size: 1rem;
+    margin-bottom: 10px;
+}
+
+.stat-value {
+    font-size: 1.7rem;
+    font-weight: bold;
+    color: #4caf50;
+    animation: pulse 2s infinite;
+}
+
+/* =====================================================
+   دارک مود
+===================================================== */
+
+body.dark .server-header-info {
+    background: #16261a;
+    border-color: #2a4a2a;
+    box-shadow: 0 6px 30px rgba(0, 0, 0, 0.4);
+}
+
+body.dark .server-motd p {
+    color: #6ac045;
+}
+
+body.dark .server-motd p:last-child {
+    color: #a0b8a0;
+}
+
+body.dark .stat-item {
+    background: #16261a;
+    border-color: #2a4a2a;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+body.dark .stat-item:hover {
+    border-color: #4caf50;
+    box-shadow: 0 12px 30px rgba(76, 175, 80, 0.2);
+}
+
+body.dark .stat-item h3 {
+    color: #6ac045;
+}
+
+body.dark .stat-value {
+    color: #6ac045;
+}
+
+/* ریسپانسیو */
+@media (max-width: 768px) {
+    .server-header-info {
+        flex-direction: column;
+        text-align: center;
+        padding: 20px;
+        gap: 15px;
+    }
+
+    .server-motd {
+        text-align: center;
+    }
+
+    .server-motd p {
+        font-size: 1.1rem;
+    }
+
+    .server-icon {
+        width: 80px;
+        height: 80px;
+    }
+
+    .stats-box {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    }
+
+    .stat-value {
+        font-size: 1.4rem;
+    }
+
+    .stat-item {
+        padding: 18px 10px;
+    }
+
+    .stat-item h3 {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 400px) {
+    .stats-box {
+        grid-template-columns: 1fr;
+    }
+}
+    </style>
 </head>
 <body>
 
-<!-- نوار ناوبری -->
-<nav class="navbar">
-  <span class="nb-logo">◈ Slime MC</span>
-  <div class="nb-links">
-    <a href="#">خانه</a>
-    <a href="#">دانلود</a>
-    <a href="#">جامعه</a>
-  </div>
-</nav>
+    <!-- منوی بالا -->
+    <nav class="navbar">
+        <p>5.42.223.171</p>
+        <div class="logo">اسلایم ام سی</div>
+        <div class="menu">
+            <a href="#home">خانه</a>
+            <a href="#preview">نمای سرور</a>
+            <a href="#shop">فروشگاه</a>
+            <a href="#buy">خرید</a>
+            <a href="#teaser">تیزر</a>
+            <a href="#staff">دست‌اندرکاران</a>
+            <a href="#ip">آی‌پی</a>
+        </div>
+        <button id="themeToggle" class="theme-btn">🌙 دارک مود</button>
+    </nav>
 
-<!-- بخش هدر -->
-<section class="hero">
-  <h1>همین الان وارد دنیای اسلایمی‌ها شو!</h1>
-  <p>محیط جذاب تورو غرق سرور می‌کنه. همین الان وارد شو و گیم‌مود اسکای‌بلاک رو تجربه کن!</p>
-  <div class="hero-ctas">
-    <a class="cta" href="#">ورود به سرور</a>
-    <a class="cta-ghost" href="#">آیپی: 5.42.223.171</a>
-  </div>
-</section>
+    <!-- بخش خانه -->
+    <section id="home" class="hero">
+        <img src="https://uploadkon.ir/uploads/2eb114_26Polish-۲۰۲۶۰۸۲۹-۰۰۴۷۳۰۱۳۶.png" alt="logo" width="250" height="250">
+        <h1>به اسلایم ام سی خوش آمدید</h1
+        <p>بهترین تجربه‌ی ماینکرافت با گیم‌مود های مختلف</p>
+        <div class="hero-buttons">
+            <a href="#shop" class="btn">ورود به فروشگاه</a>
+            <a href="https://discord.gg/69k7nrbbe" target="_blank" class="btn-discord">عضویت در دیسکورد</a>
+            <a href="https://rubika.ir/Slimemc" target="_blank" class="btn-rubika">عضویت در روبیکا</a>
+        </div>
+    </section>
 
-<!-- دانلود لانچرها -->
-<section class="section">
-  <h2 class="section-title">🚀 <span>لانچرهای</span> اختصاصی</h2>
-  <p class="section-sub">برای تجربه‌ای روان و بدون دردسر، یکی از لانچرهای زیر را دانلود کن</p>
-  <div class="launcher-grid">
-    <div class="launcher-card">
-      <div class="icon">📱</div>
-      <h4 style="margin-bottom:8px;">کولد لانچر</h4>
-      <p style="font-size:13px;color:var(--text-muted);margin-bottom:16px;">مناسب برای موبایل</p>
-      <a class="btn-solid" href="https://coldgame.ir/launcher">دانلود</a>
+
+    <!-- بخش آمار زنده سرور -->
+<h2 id="stats">📊 آمار زنده سرور</h2>
+
+<div class="server-info-box">
+    <!-- آیکون دستی + MOTD -->
+    <div class="server-header-info">
+        <img id="serverIcon" src="https://cdn.imgurl.ir/uploads/z986080_IMG_20260913_004838_706.jpg" alt="آیکون سرور" class="server-icon" />
+        <div class="server-motd">
+            <p id="motdLine1">⏳ در حال بارگذاری...</p>
+            <p id="motdLine2"></p>
+        </div>
     </div>
-    <div class="launcher-card">
-      <div class="icon">💻</div>
-      <h4 style="margin-bottom:8px;">تی‌لانچر</h4>
-      <p style="font-size:13px;color:var(--text-muted);margin-bottom:16px;">محبوب و پرسرعت</p>
-      <a class="btn-solid" href="https://tlauncher.org/">دانلود</a>
+
+    <!-- آمار -->
+    <div class="stats-box">
+        <div class="stat-item">
+            <h3>وضعیت سرور</h3>
+            <p class="stat-value" id="serverStatus">⏳</p>
+        </div>
+        <div class="stat-item">
+            <h3>بازیکنان آنلاین</h3>
+            <p class="stat-value" id="onlinePlayers">⏳</p>
+        </div>
+        <div class="stat-item">
+            <h3>حداکثر ظرفیت</h3>
+            <p class="stat-value" id="maxPlayers">⏳</p>
+        </div>
+        <div class="stat-item">
+            <h3>ورژن سرور</h3>
+            <p class="stat-value" id="serverVersion">⏳</p>
+        </div>
     </div>
-    <div class="launcher-card">
-      <div class="icon">⚡</div>
-      <h4 style="margin-bottom:8px;">فونیکس</h4>
-      <p style="font-size:13px;color:var(--text-muted);margin-bottom:16px;">سبک و حرفه‌ای</p>
-      <a class="btn-solid" href="https://phoenixclient.ir/fa/download">دانلود</a>
+</div>
+
+
+   <!-- آی‌پی سرور -->
+   <h2 id="ip">آی‌پی سرور</h2>
+   <div class="ip-box">
+       <p id="ipText">5.42.223.171</p>
+       <button onclick="copyIP()">کپی آی‌پی</button>
+   </div>
+
+
+    <!-- بخش نمای سرور -->
+    <h2 id="preview">نمای سرور</h2>
+    <div class="gallery">
+        <img src="https://cdn.imgurl.ir/uploads/g21550_IMG_20260913_004732_731.jpg" alt="نمای ۱" />
+        <img src="https://cdn.imgurl.ir/uploads/x17098_IMG_20260913_004732_956.jpg" alt="نمای ۲" />
+        <img src="https://cdn.imgurl.ir/uploads/f5001_IMG_20260913_004732_301.jpg" alt="نمای ۳" />
+        <img src="https://cdn.imgurl.ir/uploads/p50432_IMG_20260913_004732_931.jpg" alt="نمای ۴" />
+        <img src="https://cdn.imgurl.ir/uploads/d104522_IMG_20260913_004732_209.jpg" alt="نمای ۵" />
+        <img src="https://cdn.imgurl.ir/uploads/l257048_IMG_20260913_004732_203.jpg" alt="نمای ۶" />
+        <img src="https://cdn.imgurl.ir/uploads/l257048_IMG_20260913_004732_203.jpg" alt="نمای ۷" />
+        <img src="" alt="نمای 8" />
     </div>
-  </div>
-</section>
 
-<!-- تیزر و گالری -->
-<section class="section">
-  <h2 class="section-title">🎬 <span>تیزر</span> سرور</h2>
-  <p class="secti
+    <!-- بخش فروشگاه -->
+    <h2 id="shop">فروشگاه رنک</h2>
+<p class="sub">با خرید رنک، از امکانات ویژه بهره‌مند شوید.</p>
 
-on-sub">نگاهی به دنیای اسلایم‌ها و گیم‌پلی هیجان‌انگیز</p>
-  <div class="gallery-block">
-    <div class="gal-grid">
-      <img src="data:image/jpeg;base64,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
+<div class="shop">
 
-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
+    <div class="rank">
+        <h3>VIP</h3>
+        <p>رنک وی ای پی</p>
+        <span class="price">۵۰,۰۰۰ تومان</span>
+        <a href="#buy" class="btn-buy">خرید</a>
+    </div>
+
+    <div class="rank">
+        <h3>Elite</h3>
+        <p>رنک الیت</p>
+        <span class="price">۸۵,۰۰۰ تومان</span>
+        <a href="#buy" class="btn-buy">خرید</a>
+    </div>
+
+    <div class="rank">
+        <h3>Ultra</h3>
+        <p>رنک اولترا</p>
+        <span class="price">۱۴۸,۰۰۰ تومان</span>
+        <a href="#buy" class="btn-buy">خرید</a>
+    </div>
+
+    <div class="rank">
+        <h3>Prime</h3>
+        <p>رنک پرایم</p>
+        <span class="price">۲۴۵,۰۰۰ تومان</span>
+        <a href="#buy" class="btn-buy">خرید</a>
+    </div>
+
+    <div class="rank">
+        <h3>Slime</h3>
+        <p>رنک اسلایم</p>
+        <span class="price">۴۹۹,۰۰۰ تومان</span>
+        <a href="#buy" class="btn-buy">خرید</a>
+    </div>
+
+    <div class="rank">
+        <h3>Slime Lord</h3>
+        <p>رنک اسلایم لورد</p>
+        <span class="price">۱,۱۵۰,۰۰۰ تومان</span>
+        <a href="#buy" class="btn-buy">خرید</a>
+    </div>
+
+</div>
+
+    <!-- بخش اطلاعات پرداخت -->
+    <h2 id="buy">اطلاعات پرداخت</h2>
+
+    <div class="payment-box">
+        <p class="payment-intro">برای خرید رنک، مبلغ را به شماره کارت زیر واریز کنید:</p>
+
+        <div class="card-info">
+            <p id="cardNumber">3592 5102 8613 6219</p>
+            <button onclick="copyCard()">کپی شماره کارت</button>
+        </div>
+
+        <div class="payment-steps">
+            <h3>📌 مراحل خرید:</h3>
+            <ol>
+                <li>مبلغ رنک مورد نظر را به شماره کارت بالا واریز کنید.</li>
+                <li>رسید پرداخت را به همراه <strong>نام کاربری ماینکرافت</strong> خود ارسال کنید.</li>
+                <li>یوزرنیمتون رو به آیدی روبیکا زیر ارسال کنید: <strong>@SlimeMC_support</strong></li>
+                <li>پس از تأیید، رنک شما فعال می‌شود.</li>
+            </ol>
+        </div>
+
+        <div class="payment-warnings">
+            <h3>⚠️ هشدارهای مهم:</h3>
+            <ul>
+                <li>❌ از ارسال <strong>رسید فیک</strong> خودداری کنید.</li>
+                <li>❌ <strong>برگشت دادن پول</strong> وجود ندارد.</li>
+                <li>❌ بعد از ارسال رسید، <strong>اسپم نکنید</strong> و پیام‌های اضافی مثل "چی شد؟" نفرستید.</li>
+                <li>✅ فقط یک بار رسید و نام کاربری خود را ارسال کنید.</li>
+                <li>✅ حجم پیام‌ها زیاد است، صبور باشید تا رسید شما بررسی شود.</li>
+                <li>بنام صالح مطلبی</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- بخش تیزر -->
+    <h2 id="teaser">تیزر سرور</h2>
+    <div class="teaser">
+        <video muted controls width="100%" poster="https://cdn.imgurl.ir/uploads/h82499_IMG_20260913_004732_581.jpg">
+            <source src="./vid.mp4" type="video/mp4"  />
+            مرورگر شما از ویدیو پشتیبانی نمی‌کند.
+        </video>
+
+    </div><!-- بخش دست‌اندرکاران -->
+    <h2 id="staff">دست‌انددرکاران</h2>
+    <div class="staff">
+        <div class="member">
+            <img src="https://cdn.imgurl.ir/uploads/v868693_IMG_20260913_004658_984.jpg" alt="عضو ۱" />
+            <h3>mr.slime</h3>
+            <p>مدیر و بنیانگذار</p>
+        </div>
+        <div class="member">
+            <img src="https://cdn.imgurl.ir/uploads/b882225_IMG_20260913_004840_155.jpg" alt="عضو ۲" />
+            <h3>ali exer</h3>
+            <p> ادمین و برنامه نویس</p>
+        </div>
+        <div class="member">
+            <img src="https://cdn.imgurl.ir/uploads/t0332_IMG_20260913_004658_598.jpg" alt="عضو ۳" />
+            <h3>alireza mhd</h3>
+            <p>ادمین</p>
+        </div>
+        <div class="member">
+            <img src="https://cdn.imgurl.ir/uploads/n84511_IMG_20260913_004659_059.jpg" alt="عضو ۴" />
+            <h3>alireza usm</h3>
+            <p>ادمین</p>
+        </div>
+        <div class="member">
+            <img src="https://cdn.imgurl.ir/uploads/e44590_IMG_20260913_004659_365.jpg" alt="عضو ۵" />
+            <h3>Shadergolden</h3>
+            <p>هلپر</p>
+        </div>
+    </div>
+
+ 
+
+    <!-- فوتر -->
+    <footer class="footer">
+        <p>© ۲۰۲۶ اسلایم ام سی | تمامی حقوق محفوظ است.</p>
+        <a href="https://discord.gg/69k7nrbbe" target="_blank" class="discord-link">دیسکورد ما</a>
+        <a href="https://rubika.ir/slimemc" target="_blank" class="rubika-link">روبیکا ما</a>
+    </footer>
+
+    <script>
+        function copyIP() {
+            var ip = document.getElementById('ipText').innerText;
+            navigator.clipboard.writeText(ip);
+            alert('آی‌پی کپی شد: ' + ip);
+        }
+
+        function copyCard() {
+            var card = document.getElementById('cardNumber').innerText;
+            navigator.clipboard.writeText(card);
+            alert('شماره کارت کپی شد: ' + card);
+        }
+    </script>
+
+<script>
+    const toggleBtn = document.getElementById('themeToggle');
+
+    // وقتی صفحه لود میشه، وضعیت قبلی رو چک کن
+    window.addEventListener('DOMContentLoaded', () => {
+        if (localStorage.getItem('theme') === 'dark') {
+            document.body.classList.add('dark');
+            toggleBtn.textContent = '☀️  لایت مود';
+        }
+    });
+
+    // کلیک روی دکمه
+    toggleBtn.addEventListener('click', () => {
+        document.body.classList.toggle('dark');
+
+        if (document.body.classList.contains('dark')) {
+            toggleBtn.textContent = '☀️  لایت مود';
+            localStorage.setItem('theme', 'dark');
+        } else {
+            toggleBtn.textContent = '🌙 دارک مود';
+            localStorage.setItem('theme', 'light');
+        }
+    });
+</script>
+
+<script>
+    const SERVER_IP = '5.42.223.171';
+    const API_URL = 'https://api.mcsrvstat.us/3/' + SERVER_IP;
+
+    function loadServerStats() {
+        fetch(API_URL)
+            .then(response => response.json())
+            .then(data => {
+                /* ===== وضعیت سرور ===== */
+                document.getElementById('serverStatus').textContent = 
+                    data.online ? '🟢 آنلاین' : '🔴 آفلاین';
+
+                /* ===== بازیکنان آنلاین ===== */
+                document.getElementById('onlinePlayers').textContent = 
+                    data.players && data.players.online !== undefined 
+                    ? data.players.online.toLocaleString('fa-IR') 
+                    : '۰';
+
+                /* ===== حداکثر ظرفیت ===== */
+                document.getElementById('maxPlayers').textContent = 
+                    data.players && data.players.max !== undefined 
+                    ? data.players.max.toLocaleString('fa-IR') 
+                    : '—';
+
+                /* ===== ورژن سرور ===== */
+                document.getElementById('serverVersion').textContent = 
+                    data.version ? data.version : '—';
+
+                /* ===== MOTD (پیام روز) ===== */
+                var motd1 = document.getElementById('motdLine1');
+                var motd2 = document.getElementById('motdLine2');
+
+                if (data.motd && data.motd.clean) {
+                    var lines = data.motd.clean;
+                    motd1.textContent = lines[0] || 'به اسلایم ام سی خوش آمدید';
+                    motd2.textContent = lines[1] || '';
+                } else {
+                    motd1.textContent = 'به اسلایم ام سی خوش آمدید';
+                    motd2.textContent = '';
+                }
+            })
+            .catch(error => {
+                console.log('خطا:', error);
+                document.getElementById('serverStatus').textContent = '⚠️ خطا';
+                document.getElementById('onlinePlayers').textContent = '—';
+                document.getElementById('maxPlayers').textContent = '—';
+                document.getElementById('serverVersion').textContent = '—';
+                document.getElementById('motdLine1').textContent = '⚠️ اتصال به سرور برقرار نشد';
+            });
+    }
+
+    loadServerStats();
+    setInterval(loadServerStats, 30000);
+</script>
+
+
+
+
+
+
+</body>
+</html>
